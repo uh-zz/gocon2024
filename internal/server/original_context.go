@@ -15,7 +15,7 @@ func NewOriginalContext(ctx echo.Context) *OriginalContext {
 }
 
 func (c OriginalContext) BindValidate(m Middlewares, i interface{}) error {
-	scopes, ok := c.Get(gen.RoleAuthScopes).([]string)
+	scopes, ok := c.Get(gen.RoleScopes).([]string)
 	if !ok {
 		scopes = []string{}
 	}

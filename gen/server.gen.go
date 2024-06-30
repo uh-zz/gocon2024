@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	RoleAuthScopes = "RoleAuth.Scopes"
+	RoleScopes = "Role.Scopes"
 )
 
 // Error defines model for Error.
@@ -59,7 +59,7 @@ type ServerInterfaceWrapper struct {
 func (w *ServerInterfaceWrapper) GetAdminThings(ctx echo.Context) error {
 	var err error
 
-	ctx.Set(RoleAuthScopes, []string{"admin"})
+	ctx.Set(RoleScopes, []string{"admin"})
 
 	// Invoke the callback with all the unmarshaled arguments
 	err = w.Handler.GetAdminThings(ctx)
@@ -70,7 +70,7 @@ func (w *ServerInterfaceWrapper) GetAdminThings(ctx echo.Context) error {
 func (w *ServerInterfaceWrapper) GetThings(ctx echo.Context) error {
 	var err error
 
-	ctx.Set(RoleAuthScopes, []string{"normal"})
+	ctx.Set(RoleScopes, []string{"normal"})
 
 	// Invoke the callback with all the unmarshaled arguments
 	err = w.Handler.GetThings(ctx)
@@ -113,13 +113,13 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 // Base64 encoded, gzipped, json marshaled Swagger object
 var swaggerSpec = []string{
 
-	"H4sIAAAAAAAC/9xSTW8TQQz9K5HhuOqGFnGYWyUq1BMSVOIQ5TDserNG84XHQUTR/HfkmWRTyue5l51Z",
-	"j/3s956PMESfYsAgGcwR8jCjt/V6xxxZL4ljQhbCGh7iiHqOmAemJBQDmJa8qm8dTJG9FTBAQW6uoQM5",
-	"JGy/uEOG0oHHnO3uj0Dn56U0C1PYQSkdMH7dE+MIZgOnhuf0bengYdbEX8YO1tduf8erWQvKJ5L5/q1W",
-	"WefeT2A2R3jJOIGBF/1Ft/4kWt9al+5pbxr1+1iVN69/o8qTWWiEbdlqNOOwZ5LDR+3TID9Eh7d7mRfP",
-	"FOkzWka+IM8iCYoiUJhiZU/i9OXuu/XJqXTfkHNT/tXV+mqt3sSEwSYCAzc11EGyMte2vR09hV6UaA3s",
-	"UPRQtlYdvB/BwDuUW817aGlKK6cYchv9er1uexQEQ622KTkaan3/Jesw50Ws6gn6WvhP6U9+lUUAy2wP",
-	"TYGft8yuHGVZxWl1ovJY5urzReANVNJnM/6D/HPhHXRjXSNeyo8AAAD//9OGqfwrBAAA",
+	"H4sIAAAAAAAC/9xSTY/UMAz9KyPDsdoOu4hDbkis0J6QYCUOozmE1m2Nmg8cL2I0yn9HTtruMnyeuTSp",
+	"42f7veczdMHF4NFLAnOG1E3obLneMgfWS+QQkYWwhLvQo549po4pCgUPpibvylsDQ2BnBQyQl5traEBO",
+	"EesvjsiQG3CYkh1/W2h93qBJmPwIOTfA+OWBGHswB1garunH3MD9pIk/je2tK93+XK9kbVU+kkx3bxRl",
+	"5/ndAOZwhueMAxh41j7q1i6itbV1bi57U6/fp6q8evkLVS5moR6O+ajRhN0Dk5w+aJ9a8n2YcfNLq3xC",
+	"y8iPVSeRCFnR5IdQmJMoBm6/WRdnle0rcqqqv7jaX+3VlxDR20hg4KaEGohWptKytb0j34qSLIERRQ9l",
+	"atW9ux4MvEV5rXn3NU0ppRh8qmNf7/d1h7ygL2gb40xdwbefkw6zLmFRTtAV4F9lX7zKmwCW2Z6qAj9u",
+	"mN3NlGQXht1C5anExeMq7gEK4dWEfyD+P3D2uqVzJZ3z9wAAAP//04NcFh8EAAA=",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file

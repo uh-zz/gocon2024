@@ -6,7 +6,7 @@ paths:
   /things:
     get:
       security:
-        - RoleAuth:
+        - Role:
             - "normal"
       responses:
         200:
@@ -20,7 +20,7 @@ paths:
   /admin/things:
     get:
       security:
-        - RoleAuth:
+        - Role:
             - "admin"
       responses:
         200:
@@ -61,6 +61,6 @@ components:
           type: string
           description: Error message
   securitySchemes:
-    RoleAuth:
+    Role:
       type: http
       scheme: bearer
