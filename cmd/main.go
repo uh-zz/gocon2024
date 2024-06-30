@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-	// create a type that satisfies the `api.ServerInterface`, which contains an implementation of every operation from the generated code
 	s := server.NewServer()
 
 	e := echo.New()
